@@ -1,7 +1,8 @@
 from utils import utils_environment as utils
 import sys
 import os
-
+vh_path = os.path.abspath('/home/ajith/Co-LLM-Agents/cwah/virtualhome/simulation/')
+sys.path.insert(0, vh_path)
 curr_dir = os.path.dirname(os.path.realpath(__file__))
 sys.path.append(f'{curr_dir}/../../virtualhome/simulation/')
 print(f'{curr_dir}/../../virtualhome/simulation/')

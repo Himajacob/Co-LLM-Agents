@@ -1,12 +1,14 @@
-import random
-
-import openai
-import torch
 import json
 import os
-import pandas as pd
-from openai.error import OpenAIError
+import random
+
+import accelerate
 import backoff
+import openai
+import pandas as pd
+import torch
+from ollama import ChatResponse, GenerateResponse, chat, generate
+from openai.error import OpenAIError
 
 
 class LLM:
@@ -78,6 +80,12 @@ class LLM:
 				'do_sample': True,
 				'early_stopping': True,
 			}
+		elif self.source == "ollama":
+			self.sampling_params = {
+				"max_tokens": sampling_parameters.max_tokens,
+				"temperature": sampling_parameters.t,
+				"top_p": sampling_parameters.top_p,
+				}
 		elif source == "debug":
 			self.sampling_params = sampling_parameters
 		else:
@@ -85,16 +93,21 @@ class LLM:
 
 		def lm_engine(source, lm_id, device):
 			if source == 'huggingface':
-				from transformers import AutoModelForCausalLM, AutoTokenizer, LLaMATokenizer, LLaMAForCausalLM
+				from transformers import AutoModelForCausalLM, AutoTokenizer
 				print(f"loading huggingface model {lm_id}")
 				if 'llama' in lm_id or 'alpaca' in lm_id:
-					tokenizer = LLaMATokenizer.from_pretrained(lm_id, cache_dir='/work/pi_chuangg_umass_edu/.cahce') # '/gpfs/u/scratch/AICD/AICDhnng/.cache')
-					model = LLaMAForCausalLM.from_pretrained(lm_id, # device_map="balanced_low_0",
-															 # max_memory = {0: "10GB", 1: "20GB", 2: "20GB", 3: "20GB",4: "20GB",5: "20GB",6: "20GB",7: "20GB"},
-															 torch_dtype=torch.float16, low_cpu_mem_usage=True,
-        														load_in_8bit=False,
-															 cache_dir='/work/pi_chuangg_umass_edu/.cahce')\
-																.to(device)
+					# tokenizer = LLaMATokenizer.from_pretrained(lm_id, cache_dir='/work/pi_chuangg_umass_edu/.cahce') # '/gpfs/u/scratch/AICD/AICDhnng/.cache')
+					# model = LLaMAForCausalLM.from_pretrained(lm_id, # device_map="balanced_low_0",
+					# 										 # max_memory = {0: "10GB", 1: "20GB", 2: "20GB", 3: "20GB",4: "20GB",5: "20GB",6: "20GB",7: "20GB"},
+					# 										 torch_dtype=torch.float16, low_cpu_mem_usage=True,
+        			# 											load_in_8bit=False,
+					# 										 cache_dir='/work/pi_chuangg_umass_edu/.cahce')\
+					# 											.to(device)
+					# local_model_path = "/home/astoria/.llama/checkpoints/Llama3.2-1B"
+					# tokenizer = AutoTokenizer.from_pretrained(local_model_path,use_fast=False)
+					# model = AutoModelForCausalLM.from_pretrained(local_model_path, torch_dtype="auto").to("cuda" if torch.cuda.is_available() else "cpu")
+					tokenizer = AutoTokenizer.from_pretrained(lm_id, use_auth_token=os.getenv("HUGGINGFACE_TOKEN"))
+					model = AutoModelForCausalLM.from_pretrained(lm_id, torch_dtype=torch.float16, use_auth_token=os.getenv("HUGGINGFACE_TOKEN"),device_map="auto")
 				else:
 					tokenizer = AutoTokenizer.from_pretrained(lm_id, cache_dir='/work/pi_chuangg_umass_edu/.cahce')
 					model = AutoModelForCausalLM.from_pretrained(lm_id, torch_dtype=torch.float16,
@@ -141,12 +154,14 @@ class LLM:
 						print(e)
 						raise e
 				elif source == 'huggingface':
+					#print("Final Prompt:", prompt,'----------------------------------------------------------------------')  # Debugging prompt before generation
 					input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to(device)
 					prompt_len = input_ids.shape[-1]
 					# print(sampling_params)
 					output_dict = model.generate(input_ids, # max_length=prompt_len + sampling_params['max_new_tokens'],
 												 **sampling_params)
 					generated_samples = tokenizer.batch_decode(output_dict.sequences[:, prompt_len:])
+					#print("Generated output:", generated_samples,'---------------------------------------------------------------') #debugging after generation
 					# vocab_log_probs = torch.stack(output_dict.scores, dim=1).log_softmax(-1)
 					# token_log_probs = torch.gather(vocab_log_probs, 2,
 					# 							   output_dict.sequences[:, prompt_len:, None]).squeeze(-1).tolist()
@@ -157,6 +172,18 @@ class LLM:
 					# mean_log_probs = [np.mean(token_log_probs[i]) for i in range(sampling_params['num_return_sequences'])]
 				elif source == "debug":
 					return ["navigation"]
+				elif source == 'ollama':
+					#print("Final Prompt:", prompt,'----------------------------------------------------------------------')
+					try:
+						response: ChatResponse = chat(
+							model=lm_id,
+							messages=[{"role": "user", "content": prompt}],
+						)
+						#print("Generated output:", response.message.content,'---------------------------------------------------------------')
+						return [response.message.content], 0 
+					except Exception as e:
+						print(f"Ollama API request failed: {e}")
+						return ["Error"], 0
 				else:
 					raise ValueError("invalid source")
 				# generated_samples = [sample.strip().lower() for sample in generated_samples]
@@ -234,6 +261,7 @@ class LLM:
 		for i in range(len(available_actions)):
 			action = available_actions[i]
 			if action in text:
+				print("action returned normally:",action)
 				return action
 
 		for i in range(len(available_actions)):
@@ -241,6 +269,7 @@ class LLM:
 			option = chr(ord('A') + i)
 			# txt = text.lower()
 			if f"option {option}" in text or f"{option}." in text.split(' ') or f"{option}," in text.split(' ') or f"Option {option}" in text or f"({option})" in text:
+				print("action returned by choice :",action)
 				return action
 		print("WARNING! Fuzzy match!")
 		for i in range(len(available_actions)):
@@ -250,8 +279,11 @@ class LLM:
 			act, name, id = action.split(' ')
 			option = chr(ord('A') + i)
 			if f"{option} " in text or act in text or name in text or id in text:
+				print("action returned by fuzzy matchs:",action)
 				return action
 		print("WARNING! No available action parsed!!! Random choose one")
+		print(f"DEBUG: Model Response: {text}")
+		print(f"DEBUG: Available Actions: {available_actions}")
 		return random.choice(available_actions)
 
 
@@ -452,5 +484,7 @@ class LLM:
 					 "outputs": outputs,
 					 "plan": plan,
 					 "total_cost": self.total_cost})
+		return plan, info
+
 		return plan, info
 

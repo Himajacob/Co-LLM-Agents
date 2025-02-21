@@ -1,11 +1,14 @@
 import numpy as np
 import random
+import sys
+import os
+vh_path = os.path.abspath('/home/ajith/Co-LLM-Agents/cwah/virtualhome')
+sys.path.insert(0, vh_path)
 from simulation.evolving_graph.utils import load_name_equivalence
 from simulation.evolving_graph.environment import EnvironmentState, EnvironmentGraph
 import scipy.special
 import ipdb
 import pdb
-import sys
 import simulation.evolving_graph.utils as vh_utils
 import json
 import copy
