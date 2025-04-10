@@ -1,10 +1,21 @@
 from LLM import *
+import pyttsx3
 
+engine = pyttsx3.init()
+engine.say("Test Message")
+engine.runAndWait()
+# List available voices
+voices = engine.getProperty('voices')
+# Set rate (speed of speech)
+engine.setProperty('rate', 150)
+# Set volume (0.0 to 1.0)
+engine.setProperty('volume', 1.0)
 
 class LLM_agent:
 	"""
 	LLM agent class
 	"""
+	communication_count = 0 
 	def __init__(self, agent_id, char_index, args):
 		self.debug = args.debug
 		self.agent_type = 'LLM'
@@ -53,6 +64,7 @@ class LLM_agent:
 			"bedroom": None,
 			"bathroom": None,
 		}
+		self.agent_name = "Alice" if char_index == 0 else "Bob"
 
 
 	@property
@@ -283,7 +295,23 @@ class LLM_agent:
 				action = self.goput()
 			elif self.plan.startswith('[send_message]'):
 				action = self.plan[:]
+				LLM_agent.communication_count += 1 
+				log_file_path = f'../test_results/conversation_log.txt'
+				message = self.plan[len("[send_message] "):].strip()
 				self.plan = None
+				#====
+				if self.agent_name == "Alice":
+					engine.setProperty('voice', voices[1].id) # for Alice
+					engine.say(message)
+				elif self.agent_name == "Bob":
+					engine.setProperty('voice', voices[0].id) # for Bob
+					engine.say(message)
+					engine.runAndWait()
+				else : pass
+                #====
+				with open(log_file_path, 'a') as log_file:
+					log_file.write(f"{self.agent_name}: {message}\n")
+					log_file.write("-------------------------------------------------------------------------------------\n")
 			elif self.plan.startswith('[wait]'):
 				action = None
 				break
@@ -312,11 +340,12 @@ class LLM_agent:
 			if self.current_room['class_name'] != target_room_name:
 				action = f"[walktowards] <{target_room_name}> ({self.roomname2id[target_room_name]})"
 			self.stuck = 0
-	
+		#info.update({"communication_count": self.communication_count})
 		return action, info
 
 	def reset(self, obs, containers_name, goal_objects_name, rooms_name, room_info, goal):
 		self.steps = 0
+		LLM_agent.communication_count = 0 
 		self.containers_name = containers_name
 		self.goal_objects_name = goal_objects_name
 		self.rooms_name = rooms_name

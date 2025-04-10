@@ -2,7 +2,7 @@ import json
 import os
 import random
 
-import accelerate
+
 import backoff
 import openai
 import pandas as pd
@@ -49,6 +49,8 @@ class LLM:
 		self.OPENAI_KEY = None
 		self.total_cost = 0
 		self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+		print(f"Using device: {self.device}")
+
 
 		if self.source == 'openai':
 			openai.api_key = os.getenv("OPENAI_KEY")
@@ -459,7 +461,7 @@ class LLM:
 				print(f"cot_output:\n{output}")
 			chat_prompt = [{"role": "user", "content": prompt},
 						   {"role": "assistant", "content": output},
-						   {"role": "user", "content": "Answer with only one best next action. So the answer is"}]
+						   {"role": "user", "content": "Answer with only one best next action. So the answer is "}]
 			normal_prompt = prompt + output + ' So the answer is'
 			outputs, usage = self.generator(chat_prompt if self.chat else normal_prompt, self.sampling_params)
 			output = outputs[0]

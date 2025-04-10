@@ -1,0 +1,176 @@
+Alice: <Hey Bob, I'm in the bedroom and need help! I’m looking for a pudding, juice, apple, and two cupcakes to put on the coffeetable (268).>
+-------------------------------------------------------------------------------------
+Alice: <Bob, I’ve got the pudding and cupcake! Could you grab the juice, apple, and the other cupcake? Let’s get everything on the coffeetable (268)!>
+-------------------------------------------------------------------------------------
+Bob: <Okay Alice, I’ll grab the juice and the other cupcake! Let’s finish up.>
+-------------------------------------------------------------------------------------
+Bob: <Okay Alice, I’ve got the juice and the other cupcake. Could you grab the apple and put everything on the coffeetable (268)?>
+-------------------------------------------------------------------------------------
+Alice: <Bob, I’ve got the apple! Can you grab the juice and the last cupcake and put everything on the coffeetable (268)?>
+-------------------------------------------------------------------------------------
+Alice: <Bob, I’ve got the last cupcake! Can you put the juice, apple, and cupcakes on the coffeetable (268)?>
+-------------------------------------------------------------------------------------
+Alice: <Bob, I’ve got the last cupcake! Can you put the juice, apple, and cupcakes on the coffeetable (268)?>
+-------------------------------------------------------------------------------------
+Bob: <Can you grab the juice and apple and put them on the coffeetable (268)?>
+-------------------------------------------------------------------------------------
+
+communication count: 8
+Step count: 115
+=== END OF EPISODE 0 ===
+
+Alice: <“Bob, I’ve got the <wine> (383) and one <cupcake> (381). Can you grab the other <cupcake> (381) and <pudding> (385) from the <fridge> (166)?”>
+-------------------------------------------------------------------------------------
+Bob: <Okay, can you grab the remaining <cupcake> (381) and <pudding> (385) from the <fridge> (166)?>
+-------------------------------------------------------------------------------------
+Alice: <“Bob, I’ve got one more cupcake and the pudding. Could you grab them from the fridge?”>
+-------------------------------------------------------------------------------------
+
+communication count: 3
+Step count: 56
+=== END OF EPISODE 5 ===
+
+Alice: <Hey Bob, I’m in the bathroom and need your help! I’m looking for 3 cutleryforks to put in the dishwasher (104). Could you check the living room and kitchen for them?>
+-------------------------------------------------------------------------------------
+Bob: <Okay Alice, I’m checking the bedroom and kitchen for the 3 cutleryforks (373, 374, 375) – I’ve found one (374) in the bedroom. Can you check the kitchen cabinets for the remaining two?>
+-------------------------------------------------------------------------------------
+Bob: <Alice, I have a cutleryfork (374) in the bedroom. I need 2 more cutleryforks (373, 375) for the dishwasher (104)!>
+-------------------------------------------------------------------------------------
+Alice: <Bob, I found another <cutleryfork> (376) in the living room! I’m putting it in the <dishwasher> (104). We just need one more!>
+-------------------------------------------------------------------------------------
+Alice: <Bob, I've got one more cutleryfork (376) in the dishwasher! Can you check the kitchen cabinets for the last one (373 or 375)?>
+-------------------------------------------------------------------------------------
+Bob: <Alice, I'm in the kitchen cabinets - do you see <cutleryfork> (373) or (375)?>
+-------------------------------------------------------------------------------------
+Alice: <Bob, I have <cutleryfork> (376) in the dishwasher. Can you check the kitchen cabinets for <cutleryfork> (373)?>
+-------------------------------------------------------------------------------------
+Bob: <Alice, I’m checking the kitchen cabinets for <cutleryfork> (373).>
+-------------------------------------------------------------------------------------
+Bob: <Alice, I don’t have <cutleryfork> (373). I’m currently holding <cutleryfork> (374) – can you grab another one from the bathroom?>
+-------------------------------------------------------------------------------------
+Bob: <Alice, I have <cutleryfork> (376) here, can you grab a <cutleryfork> (373) from the bathroom?>
+-------------------------------------------------------------------------------------
+Bob: <Alice, I have one <cutleryfork> (376) and need you to grab a <cutleryfork> (373) from the bathroom, please!>
+-------------------------------------------------------------------------------------
+
+communication count: 11
+Step count: 112
+=== END OF EPISODE 10 ===
+
+Alice: <“Bob, I’m in the living room and need your help! I’m trying to get the forks and plate into the dishwasher (159). Can you check the kitchen?”>
+-------------------------------------------------------------------------------------
+Alice: <Bob, I’ve got one fork and the plate in the dishwasher (159). Need you to grab the other two forks!>
+-------------------------------------------------------------------------------------
+Bob: <"Okay, I’m grabbing the last two cutleryforks (387, 389) and putting them in the dishwasher (159)!”>
+-------------------------------------------------------------------------------------
+Alice: <Bob, I have one fork and the plate in the dishwasher (159). Can you grab the other two cutleryforks (387, 389) and put them in too?>
+-------------------------------------------------------------------------------------
+Bob: <“Got it! I’m grabbing <cutleryfork> (387) and <cutleryfork> (389) now.”>
+-------------------------------------------------------------------------------------
+
+communication count: 5
+Step count: 67
+=== END OF EPISODE 16 ===
+
+Alice: <“Bob, I’ve got the apple on the table. Need to find a wine, pancake, juice, and poundcake – can you start looking?”>
+-------------------------------------------------------------------------------------
+Bob: <“Okay, I’m looking for the wine, pancake, and juice. Let me know if you spot anything!”>
+-------------------------------------------------------------------------------------
+Bob: <“I’m searching for the wine and pancake. Have you seen any?”>
+-------------------------------------------------------------------------------------
+Bob: <“I’m looking for the wine and pancake. Can you check for the juice?”>
+-------------------------------------------------------------------------------------
+Alice: <“Bob, I’ve got the wine and apple. Need you to find the juice and pancake!”>
+-------------------------------------------------------------------------------------
+Alice: <“Bob, I have the poundcake and apple. Can you grab the juice and pancake?”>
+-------------------------------------------------------------------------------------
+Alice: <“Bob, I’ve got the poundcake and apple. Can you grab the juice and pancake?”>
+-------------------------------------------------------------------------------------
+Bob: <“I’m looking for the juice and pancake, Alice!”>
+-------------------------------------------------------------------------------------
+Alice: <“Bob, I have the poundcake and apple. Can you grab the juice and pancake?”>
+-------------------------------------------------------------------------------------
+
+communication count: 9
+Step count: 73
+=== END OF EPISODE 20 ===
+
+Alice: <Hey Bob, I'm in the bedroom and need a hand! I’m looking for a wine, juice, apple, cupcake and poundcake to put on the kitchen table. Can you explore the living room or kitchen for me?>
+-------------------------------------------------------------------------------------
+Bob: <“I’m in the bedroom too! I’ve got the juice and cupcake – can you check the kitchen for the wine, apple, and poundcake?”>
+-------------------------------------------------------------------------------------
+Bob: <“I’ve got the juice and cupcake. Can you grab the wine, apple, and poundcake from the kitchen?”>
+-------------------------------------------------------------------------------------
+Alice: <Bob, I have the wine. Can you grab the apple and poundcake from the kitchen?>
+-------------------------------------------------------------------------------------
+Alice: <“I have the wine, can you grab the apple and poundcake from the kitchen?”>
+-------------------------------------------------------------------------------------
+
+communication count: 5
+Step count: 62
+=== END OF EPISODE 26 ===
+
+Bob: <“Alice, I need your help! I have the pudding and apple in the fridge, but I still need a cupcake, two apples, and the juice. Can you check for those?”>
+-------------------------------------------------------------------------------------
+
+communication count: 1
+Step count: 61
+=== END OF EPISODE 30 ===
+
+Bob: <Hey Alice, I’m in the living room with a cupcake and an apple. Can you check if you’ve found the poundcake, cupcakes, and wine?>
+-------------------------------------------------------------------------------------
+Alice: <“Bob, I’ve got the poundcake and an apple. Need you to find two cupcakes and a wine!”>
+-------------------------------------------------------------------------------------
+Alice: <“Bob, I still need two cupcakes and a wine – can you grab them?”>
+-------------------------------------------------------------------------------------
+Bob: <“Okay, I’m holding the wine and an apple. Can you grab the remaining two cupcakes?”>
+-------------------------------------------------------------------------------------
+Alice: <“Bob, can you grab the two cupcakes?”>
+-------------------------------------------------------------------------------------
+Bob: <Okay, I’m holding the wine and an apple. Can you grab the remaining two cupcakes?>
+-------------------------------------------------------------------------------------
+Bob: <“Alice, can you grab the remaining two cupcakes?”>
+-------------------------------------------------------------------------------------
+
+communication count: 7
+Step count: 76
+=== END OF EPISODE 32 ===
+
+Alice: <“Bob, I’m in the bedroom with a cabinet. Can you head to the kitchen and grab a cutleryfork and two plates?”>
+-------------------------------------------------------------------------------------
+Alice: <“Bob, I have a plate on the kitchen table. Could you grab the cutleryfork and the other plate?”>
+-------------------------------------------------------------------------------------
+Alice: <“Bob, I’ve got one plate on the table. Can you grab the cutleryfork and the other plate please?”>
+-------------------------------------------------------------------------------------
+Alice: <“Bob, I have one plate on the table. Can you grab the cutleryfork and the other plate please?”>
+-------------------------------------------------------------------------------------
+Alice: <“Bob, I have one plate. Can you grab the cutleryfork and the other plate?”>
+-------------------------------------------------------------------------------------
+
+communication count: 5
+Step count: 82
+=== END OF EPISODE 40 ===
+
+Alice: <Hey Bob, I'm in the bathroom and need help! I’m looking for 2 plates and 1 cutleryfork to put on the <kitchentable> (130). Can you check the living room?>
+-------------------------------------------------------------------------------------
+Alice: <Bob, I'm in the bathroom searching for plates and cutleryfork. Could you check the kitchen?>
+-------------------------------------------------------------------------------------
+Alice: <Bob, I found a <plate> (386). Can you grab two more plates and a cutleryfork and head to the <kitchentable> (130)?>
+-------------------------------------------------------------------------------------
+Alice: <Bob, I need two more plates and a cutleryfork! Can you please find them and bring them to the <kitchentable> (130)?>
+-------------------------------------------------------------------------------------
+Bob: <“Okay, I’m grabbing two more plates and the cutleryfork and heading to the <kitchentable> (130).”>
+-------------------------------------------------------------------------------------
+Alice: <Bob, I have a plate. Can you grab two more plates and the cutleryfork and put them on the <kitchentable> (130)?>
+-------------------------------------------------------------------------------------
+Alice: <Bob, I have a plate too! Can you grab the other plates and cutleryfork and put them on the <kitchentable> (130)?>
+-------------------------------------------------------------------------------------
+Alice: <Bob, can you grab two more plates and the cutleryfork and put them on the <kitchentable> (130)?>
+-------------------------------------------------------------------------------------
+Bob: <Okay Alice, I’ve got one plate. Can you grab the other plate and the cutleryfork and put them on the <kitchentable> (130)?>
+-------------------------------------------------------------------------------------
+
+communication count: 9
+Step count: 75
+=== END OF EPISODE 49 ===
+

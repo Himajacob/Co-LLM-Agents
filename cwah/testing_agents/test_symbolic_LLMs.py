@@ -22,6 +22,7 @@ if __name__ == '__main__':
 
     args.record_dir = f'../test_results/{args.mode}' # set the record_dir right!
     Path(args.record_dir).mkdir(parents=True, exist_ok=True)
+    conversation_counts = []
 
     if "image" in args.obs_type:
         os.system("Xvfb :98 & export DISPLAY=:98")
@@ -118,6 +119,18 @@ if __name__ == '__main__':
             print('success' if success else 'failure')
             print('steps:', steps)
             print('-------------------------------------')
+            for i, agent in enumerate(arena.agents):
+                print(f'agent{i}: {agent.communication_count}')
+
+
+            conversation_counts.append(LLM_agent.communication_count)
+            print(f'Total Communication Count: {LLM_agent.communication_count}')
+            print('-------------------------------------')
+            log_file_path = f'../test_results/conversation_log.txt'
+            with open(log_file_path, 'a') as log_file:
+                log_file.write(f"\ncommunication count: {LLM_agent.communication_count}")
+                log_file.write(f"\nStep count: {steps}")
+                log_file.write(f"\n=== END OF EPISODE {episode_id} ===\n\n")
             if not success:
                 failed_tasks.append(episode_id)
             else:
@@ -143,6 +156,8 @@ if __name__ == '__main__':
                                         'L': L[episode_id]}
 
         print('average steps (finishing the tasks):', np.array(steps_list).mean() if len(steps_list) > 0 else None)
+        average_communications = np.mean(conversation_counts) if conversation_counts else 0
+        print(f'Average Conversations Per Episode: {average_communications}')
         print('failed_tasks:', failed_tasks)
         pickle.dump(test_results, open(args.record_dir + '/results.pik', 'wb'))
 

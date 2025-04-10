@@ -1,0 +1,154 @@
+Alice: <"Hey Bob, I'm holding a cupcake in the bedroom. I don't know where the other goal objects are. Can you explore the living room?">
+-------------------------------------------------------------------------------------
+Bob: <"Hey Alice, there's an apple in front of me. Why don't we put it on the coffeetable and then you can help me find a way to get the remaining objects over there?">
+-------------------------------------------------------------------------------------
+Bob: <"Put your cupcake on the coffeetable and then help me figure out how to get the pudding.">
+-------------------------------------------------------------------------------------
+Bob: <"Hey Alice, there's an apple already on the coffeetable. You're holding a cupcake, how about putting it next to the apple and then we can focus on getting the pudding and the remaining treats over there?">
+-------------------------------------------------------------------------------------
+Alice: <"Hey Bob, there's a cupcake on the coffeetable. Now that we have two objects in the livingroom, can you go explore the kitchen to see if you find any of our remaining goal objects?">
+-------------------------------------------------------------------------------------
+
+communication count: 5
+=== END OF EPISODE 0 ===
+
+Bob: <"Hey Alice, I'm holding a cupcake and the wine is in the kitchen. You should take the pudding while I grab another cupcake.">
+-------------------------------------------------------------------------------------
+Alice: <"Hey Bob, you're right about the wine! There's a pudding on the counter with you, grab it and I'll take the cupcake in your hand to free up space for another one. Then we can head out together.">
+-------------------------------------------------------------------------------------
+Alice: <"Hey Bob, I've got the wine now. Can you grab the pudding and another cupcake while I hold this one?">
+-------------------------------------------------------------------------------------
+Alice: <"Hey Bob, I've got the wine now. There's a pudding on the counter with you, grab it and give me one of your cupcakes so we can both move out.">
+-------------------------------------------------------------------------------------
+Bob: <"Hey Alice, you've got the wine now. I grabbed the pudding and need another cupcake. Check the kitchencabinet while I grab one.">
+-------------------------------------------------------------------------------------
+Bob: <"Hey Alice, grab one of your cupcakes and let me grab the pudding on the counter, then we can put everything on the coffeetable.">
+-------------------------------------------------------------------------------------
+
+communication count: 6
+=== END OF EPISODE 5 ===
+
+Bob: <"Found a cutleryfork in the livingroom. Head to the kitchen to meet me and help search.">
+-------------------------------------------------------------------------------------
+Alice: <"Hey Bob, I've got one cutleryfork and I'm in the kitchen. You can start checking the kitchencabinets while I search the rest of the room.">
+-------------------------------------------------------------------------------------
+Alice: <"Hey Bob, I've got one cutleryfork and I'm in the kitchen. You can start checking the kitchencabinets while I search the rest of the room.">
+-------------------------------------------------------------------------------------
+Alice: <"Hey Bob, I've got one cutleryfork and I'm in the kitchen. You can help me search this room, or check the kitchencabinets if you'd like.">
+-------------------------------------------------------------------------------------
+Bob: <"Hey Alice, I've already put two cutleryforks into the dishwasher. You're holding one, we just need one more. Why don't you search the <microwave> (109) and the unchecked kitchencabinets while I check the others?">
+-------------------------------------------------------------------------------------
+
+communication count: 5
+=== END OF EPISODE 10 ===
+
+Bob: <"Hey Alice, want to team up? We've already put one cutleryfork in the dishwasher. What about checking the kitchen cabinets?">
+-------------------------------------------------------------------------------------
+Alice: <"Hey Bob, I've got a cutleryfork in my hand now. Shall we check <kitchencabinet> (136) together to see if there's another one?">
+-------------------------------------------------------------------------------------
+
+communication count: 2
+=== END OF EPISODE 16 ===
+
+Bob: <"Hey Alice, I'm in the living room with the apple. Have you explored the kitchen yet?">
+-------------------------------------------------------------------------------------
+Alice: <"Hey Bob, I have the apple already. Let's focus on finding the rest of the items. Check the kitchencabinets and see if you can find the wine, pancake, or poundcake.">
+-------------------------------------------------------------------------------------
+Alice: <"Hey Bob, can you check the living room for the pancake and put it onto the kitchentable?">
+-------------------------------------------------------------------------------------
+Bob: <I'm in the kitchen now. Poundcake is already grabbed by you, and I have nothing to grab from here. Let's focus on finding pancake and juice. You check the kitchencabinets. What about me?>
+-------------------------------------------------------------------------------------
+Bob: <I'm in the bathroom, but it's empty. What about the living room? Did you find the pancake?>
+-------------------------------------------------------------------------------------
+Alice: <"Hey Bob, I'm in the kitchen with you now. The pancake and juice are still missing. You checked the living room and bathroom already. Can you check the bedroom for the pancake?">
+-------------------------------------------------------------------------------------
+Alice: <"Hey Bob, I'm in the bedroom now with the juice. You're holding the pancake. Want to come here so we can both put everything onto the kitchentable?">
+-------------------------------------------------------------------------------------
+Alice: <"Hey Bob, I've got the juice now. You're holding the pancake, right? Why don't you bring it to the kitchentable and we can put everything there?">
+-------------------------------------------------------------------------------------
+
+communication count: 8
+=== END OF EPISODE 20 ===
+
+Alice: <"Hey Bob, I'm still in the kitchen with nothing in my hands. Have you explored the living room or bathroom yet? Maybe we can divide tasks.">
+-------------------------------------------------------------------------------------
+Alice: <"Hey Bob, I'm holding a cupcake and I just found the juice in the bedroom. You were in the kitchen last time we spoke, have you checked the cabinets or looked for the wine yet?">
+-------------------------------------------------------------------------------------
+Alice: <"Hey Bob, I'm in the living room now and I've got a cupcake with me. You were last seen in the kitchen. Have you looked for the wine yet?">
+-------------------------------------------------------------------------------------
+Alice: <"Hey Bob, I'm in the bathroom now and holding nothing. Have you looked inside the kitchencabinets or found the poundcake yet?">
+-------------------------------------------------------------------------------------
+Alice: <"Hey Bob, you're holding the poundcake. I'm in the kitchen now and the cabinets are unchecked. Want to grab them together?">
+-------------------------------------------------------------------------------------
+Alice: <"Hey Bob, you're holding the poundcake and we need to put it on the kitchentable. What about grabbing the remaining objects together?">
+-------------------------------------------------------------------------------------
+
+communication count: 6
+=== END OF EPISODE 26 ===
+
+Alice: <"Bob, I've been exploring the bathroom and found nothing yet. Want to try checking the living room together?">
+-------------------------------------------------------------------------------------
+Alice: <"Hey Bob, I'm in the kitchen and there's a pudding on the counter. Can you hand over the juice so we can put it together with the pudding and put everything in the fridge?">
+-------------------------------------------------------------------------------------
+Bob: <"Hey Alice, let's check the kitchencabinet together, we need to find the cupcake and the other apple.">
+-------------------------------------------------------------------------------------
+Alice: <"Hey Bob, I'm holding an apple and there's a pudding on the counter. Can we grab the cupcake from the kitchencabinet together?">
+-------------------------------------------------------------------------------------
+Bob: <"Hey Alice, we still need to find the cupcake and one more apple. Want to grab them together from the kitchencabinet?">
+-------------------------------------------------------------------------------------
+Alice: <"Hey Bob, I'm holding nothing but there's a pudding on the counter, and we've already put the pudding and two apples in the fridge. Want to check the kitchencabinet together for the cupcake and the last apple?">
+-------------------------------------------------------------------------------------
+Alice: <"Hey Bob, I'm holding the cupcake and we still need to find one more apple. Want to grab it together?">
+-------------------------------------------------------------------------------------
+Bob: <"Hey Alice, we need one more apple and the cupcake. You're holding the cupcake, can we put it in the fridge together and then check the kitchencabinet for the last apple?">
+-------------------------------------------------------------------------------------
+Bob: <"Hey Alice, you're holding the cupcake and we still need one more apple. Let's put this in the fridge together.">
+-------------------------------------------------------------------------------------
+
+communication count: 9
+=== END OF EPISODE 30 ===
+
+Alice: <"Hey Bob, I'm in the kitchen and I see the poundcake is nearby but there's no other goal object in sight yet. What about checking the livingroom?">
+-------------------------------------------------------------------------------------
+Bob: <"Hey Alice, you're in the kitchen. Have you checked the kitchencabinets yet? We need to find 2 more cupcakes.">
+-------------------------------------------------------------------------------------
+Bob: <"Hey Alice, since we have 2 cupcakes in the fridge and need only one more, why don't you check the kitchencabinets while I search the remaining unchecked containers in the kitchen?">
+-------------------------------------------------------------------------------------
+Bob: <"Hey Alice, I've already searched the other kitchen containers and I'm free to help. Why don't we divide the remaining task? You check the kitchencabinets while I search the livingroom for more cupcakes?">
+-------------------------------------------------------------------------------------
+Alice: <"Hey Bob, we have 2 cupcakes in the fridge and need one more. Since I'm already in the livingroom with nothing left to explore there, why don't you check the remaining containers in the kitchen while I search the bedroom for any goal objects?">
+-------------------------------------------------------------------------------------
+Alice: <"Hey Bob, we have 2 cupcakes in the fridge and need one more. Since I'm already in the bedroom with the apple, why don't you grab that wine from the livingroom so we can put it in the fridge too?">
+-------------------------------------------------------------------------------------
+
+communication count: 6
+=== END OF EPISODE 32 ===
+
+Bob: <"Hey Alice, need your help! You're closer to the livingroom where I found a plate. Can you grab it and bring it back to the kitchen?">
+-------------------------------------------------------------------------------------
+Alice: <"Hey Bob, you're holding a plate already! Why don't you bring it back to the kitchen with you and we can focus on finding more items together?">
+-------------------------------------------------------------------------------------
+Bob: <"Hey Alice, I've got a plate, can you go grab the cutleryfork and bring it to the kitchen?">
+-------------------------------------------------------------------------------------
+Bob: <"Hey Alice, I've got a plate already. Why don't we work together to find the cutleryfork and the other plate? Let's start by checking these kitchencabinets.">
+-------------------------------------------------------------------------------------
+Alice: <"Hey Bob, we're missing a cutleryfork and another plate. You've got one plate already. Why don't you bring it back to the kitchen with you? I'll check the remaining kitchencabinets while you help me out?">
+-------------------------------------------------------------------------------------
+
+communication count: 5
+=== END OF EPISODE 40 ===
+
+Alice: <"Hey Bob, I've been searching the kitchen and didn't find any goal objects yet. Can you hand me the <plate> (387) you're holding so we can put it on the <kitchentable>?">
+-------------------------------------------------------------------------------------
+Bob: <"Hey Alice, no luck in the livingroom. You're still in the kitchen, right? Hand over the <plate> (386) and let's get that on the <kitchentable> (130). I'll then go check the kitchen cabinets for the cutleryfork.">
+-------------------------------------------------------------------------------------
+Alice: <"Hey Bob, hand over the <plate> (387) to me so we can put it on the <kitchentable>.">
+-------------------------------------------------------------------------------------
+Bob: <"Hey Alice, hand over the <plate> (386) so we can put it on the <kitchentable> (130). Then I'll go check the remaining unchecked containers for the cutleryfork.">
+-------------------------------------------------------------------------------------
+Bob: <"Hey Alice, hand over the <plate> (387) to me so we can put it on the <kitchentable> (130). Then you check your other <plate> (386).">
+-------------------------------------------------------------------------------------
+
+communication count: 5
+=== END OF EPISODE 49 ===
+

@@ -5,4 +5,5 @@ Progress: $PROGRESS$
 Previous actions: $ACTION_HISTORY$
 Available actions:
 $AVAILABLE_ACTIONS$
+
 Answer:"

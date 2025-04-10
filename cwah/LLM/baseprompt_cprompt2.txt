@@ -19,5 +19,10 @@ Alice: ""Hi, I'll let you know if I find any goal objects and finish any subgoal
 Bob: ""Thanks! I'll let you know if I find any goal objects and finish any subgoals, and ask for your help when necessary.""
 $DIALOGUE_HISTORY$
 
-Note: The generated message should be accurate, helpful and brief. Do not generate repetitive messages.
+Note:The generated message should be accurate, helpful and brief. Respond as if you are directly speaking to $OPPO_NAME$.DO NOT include explanations, prefaces, or extra formatting and Do not generate repetitive. 
+Example: 
+
+Alice: ""Hey Bob, I found an apple. Can you check the fridge for juice?""
+
+Bob: ""Hey Alice, I checked the fridge. No juice here. Try the kitchen cabinet?""
 "

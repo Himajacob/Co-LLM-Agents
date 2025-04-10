@@ -5,7 +5,7 @@ python testing_agents/test_symbolic_LLMs.py \
 --mode LLMs_comm_ollama \
 --executable_file ../executable/linux_exec.v2.3.0.x86_64 \
 --base-port 6314 \
---lm_id llama3.2 \
+--lm_id llama3.1 \
 --source ollama \
 --t 0.8 \
 --max_tokens 256 \
