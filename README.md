@@ -19,20 +19,20 @@ In addition to improving prompt efficiency, this work integrates speech and grap
 **type:** base  
 **prompt:**
 
-I’m **$AGENT_NAME$**. I’m in a hurry to finish the housework with my friend **$OPPO_NAME$** together. Given our shared goal, dialogue history, and my progress and previous actions, please help me choose the best available action to achieve the goal as soon as possible.  
+I’m **\$AGENT_NAME\$**. I’m in a hurry to finish the housework with my friend **\$OPPO_NAME\$** together. Given our shared goal, dialogue history, and my progress and previous actions, please help me choose the best available action to achieve the goal as soon as possible.  
 Note that I can hold two objects at a time and there are no costs for holding objects. All objects are denoted as `<name> (id)`, such as `<table> (712)`.
 
-**Goal:** $GOAL$  
-**Progress:** $PROGRESS$  
+**Goal:** \$GOAL\$  
+**Progress:** \$PROGRESS\$  
 
 **Dialogue history:**  
 Alice: "Hi, I’ll let you know if I find any goal objects and finish any subgoals, and ask for your help when necessary."  
 Bob: "Thanks! I’ll let you know if I find any goal objects and finish any subgoals, and ask for your help when necessary."  
-$DIALOGUE_HISTORY$  
+\$DIALOGUE_HISTORY\$  
 
-**Previous actions:** $ACTION_HISTORY$  
+**Previous actions:** \$ACTION_HISTORY\$  
 **Available actions:**  
-$AVAILABLE_ACTIONS$  
+\$AVAILABLE_ACTIONS\$  
 
 **Answer:**
 
@@ -43,19 +43,19 @@ $AVAILABLE_ACTIONS$
 **type:** base  
 **prompt:**
 
-I’m **$AGENT_NAME$**. I’m in a hurry to finish the housework with my friend **$OPPO_NAME$** together. Given our shared goal, dialogue history, and my progress and previous actions, **you should select the most efficient action based on the goal, progress, and available options. Ensure your choice contributes directly to goal completion.**  
+I’m **\$AGENT_NAME\$**. I’m in a hurry to finish the housework with my friend **\$OPPO_NAME\$** together. Given our shared goal, dialogue history, and my progress and previous actions, **you should select the most efficient action based on the goal, progress, and available options. Ensure your choice contributes directly to goal completion.**  
 Note that I can hold two objects at a time and there are no costs for holding objects. All objects are denoted as `<name> (id)`, such as `<table> (712)`.
 
-**Goal:** $GOAL$  
-**Progress:** $PROGRESS$  
+**Goal:** \$GOAL\$  
+**Progress:** \$PROGRESS\$  
 **Dialogue history:**  
 Alice: "Hi, I’ll let you know if I find any goal objects and finish any subgoals, and ask for your help when necessary."  
 Bob: "Thanks! I’ll let you know if I find any goal objects and finish any subgoals, and ask for your help when necessary."  
-$DIALOGUE_HISTORY$  
+\$DIALOGUE_HISTORY\$  
 
-**Previous actions:** $ACTION_HISTORY$  
+**Previous actions:** \$ACTION_HISTORY\$  
 **Available actions:**  
-$AVAILABLE_ACTIONS$  
+\$AVAILABLE_ACTIONS\$  
 
 **Answer:**
 
@@ -66,19 +66,19 @@ $AVAILABLE_ACTIONS$
 **type:** base  
 **prompt:**
 
-I’m **$AGENT_NAME$**. I’m in a hurry to finish the housework with my friend **$OPPO_NAME$** together. Given our shared goal, dialogue history, and my progress and previous actions, please help me choose the best available action to achieve the goal as soon as possible.  
+I’m **\$AGENT_NAME\$**. I’m in a hurry to finish the housework with my friend **\$OPPO_NAME\$** together. Given our shared goal, dialogue history, and my progress and previous actions, please help me choose the best available action to achieve the goal as soon as possible.  
 Note that I can hold two objects at a time and there are no costs for holding objects. All objects are denoted as `<name> (id)`, such as `<table> (712)`.
 
-**Goal:** $GOAL$  
-**Progress:** $PROGRESS$  
+**Goal:** \$GOAL\$  
+**Progress:** \$PROGRESS\$  
 **Dialogue history:**  
 Alice: "Hi, I’ll let you know if I find any goal objects and finish any subgoals, and ask for your help when necessary."  
 Bob: "Thanks! I’ll let you know if I find any goal objects and finish any subgoals, and ask for your help when necessary."  
-$DIALOGUE_HISTORY$  
+\$DIALOGUE_HISTORY\$  
 
-**Previous actions:** $ACTION_HISTORY$  
+**Previous actions:** \$ACTION_HISTORY\$  
 **Available actions:**  
-$AVAILABLE_ACTIONS$  
+\$AVAILABLE_ACTIONS\$  
 
 **1. Analyze the goal:** What is the next step needed?  
 **2. Analyze the progress:** What is my current state, and what do I still need to achieve the goal?  
@@ -95,16 +95,16 @@ $AVAILABLE_ACTIONS$
 **type:** gen  
 **prompt:**
 
-I’m **$AGENT_NAME$**. I’m in a hurry to finish the housework with my friend **$OPPO_NAME$** together. Given our shared goal, dialogue history, and my progress and previous actions, please help me generate a short message to send to **$OPPO_NAME$** to help us achieve the goal as soon as possible.  
+I’m **\$AGENT_NAME\$**. I’m in a hurry to finish the housework with my friend **\$OPPO_NAME\$** together. Given our shared goal, dialogue history, and my progress and previous actions, please help me generate a short message to send to **\$OPPO_NAME\$** to help us achieve the goal as soon as possible.  
 Note that I can hold two objects at a time and there are no costs for holding objects. All objects are denoted as `<name> (id)`, such as `<table> (712)`.
 
-**Goal:** $GOAL$  
-**Progress:** $PROGRESS$  
-**Previous actions:** $ACTION_HISTORY$  
+**Goal:** \$GOAL\$  
+**Progress:** \$PROGRESS\$  
+**Previous actions:** \$ACTION_HISTORY\$  
 **Dialogue history:**  
 Alice: "Hi, I’ll let you know if I find any goal objects and finish any subgoals, and ask for your help when necessary."  
 Bob: "Thanks! I’ll let you know if I find any goal objects and finish any subgoals, and ask for your help when necessary."  
-$DIALOGUE_HISTORY$  
+\$DIALOGUE_HISTORY\$  
 
 **Note:** The generated message should be accurate, helpful and brief. Do not generate repetitive messages.
 
@@ -114,7 +114,7 @@ $DIALOGUE_HISTORY$
 
 Same as B.1 with this added to the note:
 
-**Note:** Respond as if you are directly speaking to **$OPPO_NAME$**. **DO NOT** include explanations, prefaces, or extra formatting and do not generate repetitive messages.
+**Note:** Respond as if you are directly speaking to **\$OPPO_NAME\$**. **DO NOT** include explanations, prefaces, or extra formatting and do not generate repetitive messages.
 
 ---
 
@@ -159,4 +159,4 @@ Combines direct instruction from CPrompt1 with the example from CPrompt2.
 #### C.2 Action Prompt 1 - One Shot
 
 **Answer with only one best next action. Select the most efficient action and ensure your choice contributes directly to goal completion.**  
-E.g. **E. [gocheck] <cabinet> (216)**, so the answer is
+E.g. **E. [gocheck] \<cabinet\> (216)**, so the answer is
