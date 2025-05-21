@@ -1,156 +1,128 @@
-# Building Cooperative Embodied Agents Modularly with Large Language Models (ICLR 2024)
+# Introduction
+The increasing complexity of real-world tasks has led to a growing interest in developing artificial agents capable of not just acting independently, but collaborating effectively in shared environments. This paradigm, known as Collaborative Embodied AI (CEAI), focuses on multi-agent systems that can reason, communicate, and coordinate with each other toward common goals. As large language models (LLMs) like LLaMA, Mistral, and DeepSeek gain prominence for their language understanding and reasoning abilities, their integration into embodied agents opens new possibilities for intelligent collaboration.
 
-This repo contains codes for the following paper:
+However, several challenges persist in applying LLMs within CEAI contexts, including effective prompt design, context retention, and natural inter-agent communication. Addressing these gaps, this paper builds upon the CoELA framework—a modular architecture for collaborative agents—to systematically explore how different prompting strategies and LLM configurations influence cooperation, decision-making, and task performance. The study introduces refined planning, communication, and action prompts, and benchmarks their effectiveness across multiple models and tasks.
 
-_Hongxin Zhang*, Weihua Du*, Jiaming Shan, Qinhong Zhou, Yilun Du, Joshua B. Tenenbaum, Tianmin Shu, Chuang Gan_: Building Cooperative Embodied Agents Modularly with Large Language Models 
+In addition to improving prompt efficiency, this work integrates speech and graphical interfaces to enhance real-time agent interaction, leading to a more intuitive and human-like collaboration system. Quantitative and qualitative evaluations reveal that specific prompt combinations—particularly the improved base planning prompt combined with the fourth communication prompt (cprompt4)—can significantly enhance performance, even for smaller models like Gemma 3. Overall, the study contributes to advancing scalable, naturalistic collaboration in embodied AI systems.
+# Appendix
 
-Paper: [Arxiv](https://arxiv.org/abs/2307.02485)
+## A. Planning Prompts
 
-Project Website: [Co-LLM-Agents](https://vis-www.cs.umass.edu/Co-LLM-Agents/)
+### A.1 BasePrompt
 
-![Pipeline](assets/framework.png)
+**type:** base
+**prompt:**
+"I’m $AGENT_NAME$. I’m in a hurry to finish the housework with my friend $OPPO_NAME$ together. Given our shared goal, dialogue history, and my progress and previous actions, please help me choose the best available action to achieve the goal as soon as possible. Note that I can hold two objects at a time and there are no costs for holding objects. All objects are denoted as <name> (id), such as <table> (712).  
+Goal: $GOAL$  
+Progress: $PROGRESS$  
+Dialogue history:  
+Alice: ""Hi, I’ll let you know if I find any goal objects and finish any subgoals, and ask for your help when necessary.""  
+Bob: ""Thanks! I’ll let you know if I find any goal objects and finish any subgoals, and ask for your help when necessary.""  
+$DIALOGUE_HISTORY$  
+Previous actions: $ACTION_HISTORY$  
+Available actions:  
+$AVAILABLE_ACTIONS$  
+Answer:"
 
-## News
+### A.2 Improved Base Prompt- Explicit Instructions
 
-**[8/25/2024]**: Updates on the navigation module of agents on the `ThreeDWorld Multi-Agent Transport` environment to fix the navigation issues.
+**type:** base  
+**prompt:**  
+"I’m $AGENT_NAME$. I’m in a hurry to finish the housework with my friend $OPPO_NAME$ together. Given our shared goal, dialogue history, and my progress and previous actions, you should select the most efficient action based on the goal, progress, and available options. Ensure your choice contributes directly to goal completion. Note that I can hold two objects at a time and there are no costs for holding objects. All objects are denoted as <name> (id), such as <table> (712).  
+Goal: $GOAL$  
+Progress: $PROGRESS$  
+Dialogue history:  
+Alice: ""Hi, I’ll let you know if I find any goal objects and finish any subgoals, and ask for your help when necessary.""  
+Bob: ""Thanks! I’ll let you know if I find any goal objects and finish any subgoals, and ask for your help when necessary.""  
+$DIALOGUE_HISTORY$  
+Previous actions: $ACTION_HISTORY$  
+Available actions:  
+$AVAILABLE_ACTIONS$  
+Answer:"
 
-**[9/4/2023]**: `ThreeDWorld Multi-Agent Transport` no longer provides ground truth segmentation mask in default. We implement a vision detection module with a fine-tuned Mask-RCNN model. For more details, please read [README](tdw_mat/README.md) in _tdw_mat_.
+### A.3 Structured Base Prompt- Forced Reasoning
 
-**[8/1/2023]**: We provide the VirtualHome Simulator executable we used [here](https://drive.google.com/file/d/1JTrV5jdF-LQVwY3OsV3Jd3r6PRghyHBp/view?usp=sharing). If you met `XDG_RUNTIME_DIR not set in the environment` error previously, please check if you are using the new version we provided.
+**type:** base  
+**prompt:**  
+"I’m $AGENT_NAME$. I’m in a hurry to finish the housework with my friend $OPPO_NAME$ together. Given our shared goal, dialogue history, and my progress and previous actions, please help me choose the best available action to achieve the goal as soon as possible. Note that I can hold two objects at a time and there are no costs for holding objects. All objects are denoted as <name> (id), such as <table> (712).  
+Goal: $GOAL$  
+Progress: $PROGRESS$  
+Dialogue history:  
+Alice: ""Hi, I’ll let you know if I find any goal objects and finish any subgoals, and ask for your help when necessary.""  
+Bob: ""Thanks! I’ll let you know if I find any goal objects and finish any subgoals, and ask for your help when necessary.""  
+$DIALOGUE_HISTORY$  
+Previous actions: $ACTION_HISTORY$  
+Available actions:  
+$AVAILABLE_ACTIONS$  
+1. Analyze the goal: What is the next step needed?  
+2. Analyze the progress: What is my current state, and what do I still need to achieve the goal?  
+3. Evaluate actions: Which action minimizes steps to reach the goal?  
+Answer:"
 
-## Installation
+## B. Communication Prompts
 
-For detailed instructions on the installation of the two embodied multi-agent environments `Communicative Watch-And-Help` and `ThreeDWorld Multi-Agent Transport`, please refer to the Setup sections in `cwah/README.md` and `tdw_mat/README.md` respectively.
+### B.1 BasePrompt
 
-### A simple start guide for `ThreeDWorld Multi-Agent Transport`:
+**type:** gen  
+**prompt:**  
+"I’m $AGENT_NAME$. I’m in a hurry to finish the housework with my friend OPPONAMEtogether.Givenourshared goal, dialogue history, and my progress and previous actions, please help me generate a short message to send to OPPONAME to help us achieve the goal as soon as possible. Note that I can hold two objects at a time and there are no costs for holding objects. All objects are denoted as <name> (id), such as <table> (712).  
+Goal: $GOAL$  
+Progress: $PROGRESS$  
+Previous actions: $ACTION_HISTORY$  
+Dialogue history:  
+Alice: "Hi, I’ll let you know if I find any goal objects and finish any subgoals, and ask for your help when necessary."  
+Bob: "Thanks! I’ll let you know if I find any goal objects and finish any subgoals, and ask for your help when necessary."  
+$DIALOGUE_HISTORY$  
+Note: The generated message should be accurate, helpful and brief. Do not generate repetitive messages.
 
-Run the following commands step by step to set up the environments:
+### B.2 CPrompt1-Instruction Removal
 
-```bash
-cd tdw_mat
-conda create -n tdw_mat python=3.9
-conda activate tdw_mat
-pip install -e .
-```
+**type:** gen  
+**prompt:**  
+Same as B.1 with this note:  
+Note: The generated message should be accurate, helpful and brief. Respond as if you are directly speaking to $OPPO_NAME$. DO NOT include explanations, prefaces, or extra formatting and Do not generate repetitive messages.
 
-If you're running TDW on a remote Linux server, follow the [TDW Installation Document](https://github.com/threedworld-mit/tdw/blob/master/Documentation/lessons/setup/install.md) to configure the X server.
+### B.3 CPrompt2-OneShot
 
-After that, you can run the demo scene to verify your setup:
+**type:** gen  
+**prompt:**  
+Same base as B.1 with this note:  
+Note: The generated message should be accurate, helpful and brief. Do not generate repetitive messages.  
+**Example:**  
+Alice: "Hey Bob, I found an apple. Can you check the fridge for juice"?  
+Bob: "Hey Alice, I checked the fridge. No juice here. Try the kitchen cabinet?"
 
-```bash
-python demo/demo_scene.py
-```
+### B.4 CPrompt3-Multi Shot
 
-### A simple start guide for `Communicative Watch-And-Help`:
+**type:** gen  
+**prompt:**  
+Same base as B.1 with this note:  
+Note: The generated message should be accurate, helpful and brief. Do not generate repetitive messages.  
+**Example:**  
+Alice: "Hey Bob, I found an apple. Can you check the fridge for juice?"  
+Bob: "Hey Alice, I checked the fridge. No juice here. Try the kitchen cabinet?"  
+Alice: "Hey Bob, I placed an apple on the table. Have you checked the cabinets?"  
+Bob: "Hey Alice, I just checked the fridge. I’ll check the cabinets now."  
+Alice: "Hey Bob, I found a cupcake in the kitchen. I have two objects on my hand, Can you come and pick it up"  
+Bob: "Hey Alice, yes! I will come over and pick it up now ."
 
-**Step 1**: Get the VirtualHome Simulator and API and put it at the same level as the `cwah` folder.
+### B.5 CPrompt4-CPrompt1+CPrompt2
 
-Clone the [VirtualHome API](https://github.com/xavierpuigf/virtualhome.git) repository:
+**type:** gen  
+**prompt:**  
+Same base as B.1 with this note:  
+Note: The generated message should be accurate, helpful and brief. Respond as if you are directly speaking to $OPPO_NAME$. DO NOT include explanations, prefaces, or extra formatting and Do not generate repetitive messages.  
+**Example:**  
+Alice: "Hey Bob, I found an apple. Can you check the fridge for juice"?  
+Bob: "Hey Alice, I checked the fridge. No juice here. Try the kitchen cabinet?"
 
-```bash
-git clone --branch wah https://github.com/xavierpuigf/virtualhome.git
-```
+## C. Action Prompts
 
-Download the [Simulator](https://drive.google.com/file/d/1L79SxE07Jt-8-_uCvNnkwz5Kf6AjtaGp/view?usp=sharing) (Linux x86-64 version), and unzip it.
+### C.1 BasePrompt
 
-```bash
-gdown https://drive.google.com/uc?id=1L79SxE07Jt-8-_uCvNnkwz5Kf6AjtaGp
-unzip executable.zip
-chmod +x executable/linux_exec.v2.3.0.x86_64
-```
+Answer with only one best next action. So the answer is
 
-The files should be organized as follows:
+### C.2 Action Prompt 1 - One Shot
 
-```bash
-|--cwah/
-|--virtualhome/
-|--executable/
-```
-
-**Step 2**: Install Requirements
-```bash
-cd cwah
-conda create --name cwah python=3.8
-conda activate cwah
-pip install -r requirements.txt
-```
-
-## Run Experiments
-
-The main implementation code of our _CoELA_ is in `tdw_mat/LLM` and `tdw_mat/tdw_gym/lm_agent.py`.
-
-We also prepare example scripts to run experiments with HP baseline and our _CoELA_ under the folder `tdw_mat/scripts`.
-
-For example, to run experiments with two _CoELA_ on `ThreeDWorld Multi-Agent Transport`, run the following command in folder `tdw_mat`.
-
-```
-./scripts/test_LMs-gpt-4.sh
-```
-
-## Environment Details
-
-### ThreeDWorld Multi-Agent Transport (TDW-MAT)
-
-We extend the [ThreeDWorld Transport Challenge](https://arxiv.org/abs/2103.14025) into a multi-agent setting with more types of objects and containers, more realistic object placements, and support communication between agents, named ThreeDWorld Multi-Agent Transport (TDW-MAT), built on top of the [TDW platform](https://www.threedworld.org/). 
-
-The agents are tasked to transport as many target objects as possible to the goal position with the help of containers as tools. One container can carry most three objects, and without containers, the agent can transport only two objects at a time. The agents have the ego-centric visual observation and action space as before with a new communication action added.
-
-#### Tasks 
-
-We selected $6$ scenes from the TDW-House dataset and sampled $2$ types of tasks and $2$ settings in each of the scenes, making a test set of $24$ episodes. Every scene has $6$ to $8$ rooms, $10$ objects, and a few containers. An episode is terminated if all the target objects have been transported to the goal position or the maximum number of frames ($3000$) is reached. 
-
-The tasks are named `food task` and `stuff task`. Containers for the `food task` can be found in both the kitchen and living room, while containers for the `stuff task` can be found in the living room and office. 
-
-The configuration and distribution of containers vary based on two distinct settings: the `Enough Container Setting` and the `Rare Container Setting`. In the `Enough Container Setting`, the ratio of containers to objects stands at $1:2$, and containers associated with a specific task are located in no more than two rooms. On the other hand, in the `Rare Container Setting`, the container-to-object ratio decreases to $1:5$. This distribution differs from the "Enough Container Setting" as containers in the `Rare Container Setting` are strictly localized to a single room. 
-
-One example of scenes, target objects, and containers is shown in the following image:
-
-![tdw_mat](assets/tdw_env.png)
-
-#### Metrics
-
-  - **Transport Rate (TR)**: The fraction of the target objects successfully transported to the goal position.
-  - **Efficiency Improvements (EI)**: The efficiency improvements of cooperating with base agents.
-
-### Communicative Watch-And-Help (C-WAH)
-
-Communicative Watch-And-Help(C-WAH) is an extension of the [Watch-And-Help challenge](https://github.com/xavierpuigf/watch_and_help), which enables agents to send messages to each other. Sending messages, alongside other actions, takes one timestep and has an upper limit on message length.
-
-#### Tasks 
-
-Five types of tasks are available in C-WAH, named `Prepare afternoon tea`, `Wash dishes`, `Prepare a meal`, `Put groceries`, and `Set up a dinner table`. These tasks include a range of housework, and each task contains a few subgoals, which are described by predicates. A predicate is in `ON/IN(x, y)` format, that is, `Put x ON/IN y`. The detailed descriptions of tasks are listed in the following table:
-
-| Task Name | Predicate Set |
-| ------- | ------- |
-| Prepare afternoon tea   | ON(cupcake,coffeetable), ON(pudding,coffeetable), ON(apple,coffeetable), ON(juice,coffeetable), ON(wine,coffeetable)  |
-| Wash dishes  | IN(plate,dishwasher), IN(fork,dishwasher)  |
-| Prepare a meal | ON(coffeepot,dinnertable),ON(cupcake,dinnertable), ON(pancake,dinnertable), ON(poundcake,dinnertable), ON(pudding,dinnertable), ON(apple,dinnertable), ON(juice,dinnertable), ON(wine,dinnertable) |
-|Put groceries | IN(cupcake,fridge), IN(pancake,fridge), IN(poundcake,fridge), IN(pudding,fridge), IN(apple,fridge), IN(juice,fridge), IN(wine,fridge) |
-|Set up a dinner table | ON(plate,dinnertable), ON(fork,dinnertable) |
-
-The task goal is to satisfy all the given subgoals within $250$ time steps, and the number of subgoals in each task ranges from $3$ to $5$. 
-
-#### Metrics
-
-  - **Average Steps (L)**: Number of steps to finish the task;
-  - **Efficiency Improvement (EI)**: The efficiency improvements of cooperating with base agents.
-
-
-## Interesting Cases
-
-We noticed many interesting agents' behaviors exhibited in our experiments and identified several cooperative behaviors.
-
-There are more interesting cases and demos on our [website](https://vis-www.cs.umass.edu/Co-LLM-Agents/)!
-
-![qualitative_results](assets/qualitative_results.png)
-
-## Citation
-If you find our work useful, please consider citing:
-```
-@article{zhang2024building,
-  title={Building Cooperative Embodied Agents Modularly with Large Language Models},
-  author={Zhang, Hongxin and Du, Weihua and Shan, Jiaming and Zhou, Qinhong and Du, Yilun and Tenenbaum, Joshua B and Shu, Tianmin and Gan, Chuang},
-  journal={ICLR},
-  year={2024}
-}
-```
+Answer with only one best next action. Select the most efficient action and ensure your choice contributes directly to goal completion.  
+**E.g.** E. [gocheck] <cabinet> (216), So the answer is
