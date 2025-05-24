@@ -18,6 +18,35 @@ This system is built on top of the **CWAH module of CoELA**:
 
 
 ---
+## 🧹 Task Types in CWAH
+
+Five types of tasks are available in CWAH, representing typical housework scenarios. Each task consists of several subgoals described by **predicates** in the format `ON(x, y)` or `IN(x, y)` — for example: `Put x ON y` or `Put x IN y`.  
+➡️ **Each task is treated as a single episode during evaluation.**
+
+### 🗂️ Task List and Predicate Sets
+
+| **Task Name**            | **Predicate Set**                                                                                                                                  |
+|--------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
+| Prepare afternoon tea     | ON(cupcake, coffeetable), ON(pudding, coffeetable), ON(apple, coffeetable), ON(juice, coffeetable), ON(wine, coffeetable)                        |
+| Wash dishes               | IN(plate, dishwasher), IN(fork, dishwasher)                                                                                                       |
+| Prepare a meal           | ON(coffeepot, dinnertable), ON(cupcake, dinnertable), ON(pancake, dinnertable), ON(poundcake, dinnertable), ON(pudding, dinnertable), <br>ON(apple, dinnertable), ON(juice, dinnertable), ON(wine, dinnertable) |
+| Put groceries            | IN(cupcake, fridge), IN(pancake, fridge), IN(poundcake, fridge), IN(pudding, fridge), IN(apple, fridge), IN(juice, fridge), IN(wine, fridge)     |
+| Set up a dinner table    | ON(plate, dinnertable), ON(fork, dinnertable)                                                                                                     |
+
+---
+
+### 📊 Evaluation Metrics
+
+Each task is evaluated as an **independent episode** with the following metrics:
+
+- **Average Steps (L):** Total number of steps taken to complete the task
+- **Turn Count:** Number of back-and-forth agent interactions during the episode
+- **Efficiency Improvement (EI):**
+  - **EI-Collab:** Efficiency gain from collaboration (multi-agent vs solo agent)
+  - **EI-Prompt:** Efficiency gain from improved prompting (e.g., CPrompt vs base)
+  - Both are computed by comparing step counts across configurations
+
+---
 
 ## Appendix
 
