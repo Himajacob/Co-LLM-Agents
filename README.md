@@ -1,12 +1,21 @@
 # Improving Co-operation in Collaborative Embodied AI
 
-## Introduction
+This system is built on top of the **CWAH module of CoELA**:  
+🔗 https://github.com/UMass-Embodied-AGI/CoELA
 
-The increasing complexity of real-world tasks has led to a growing interest in developing artificial agents capable of not just acting independently, but collaborating effectively in shared environments. This paradigm, known as Collaborative Embodied AI (CEAI), focuses on multi-agent systems that can reason, communicate, and coordinate with each other toward common goals. As large language models (LLMs) like LLaMA, Mistral, and DeepSeek gain prominence for their language understanding and reasoning abilities, their integration into embodied agents opens new possibilities for intelligent collaboration.
+## Objectives
 
-However, several challenges persist in applying LLMs within CEAI contexts, including effective prompt design, context retention, and natural inter-agent communication. Addressing these gaps, this paper builds upon the CoELA framework—a modular architecture for collaborative agents—to systematically explore how different prompting strategies and LLM configurations influence cooperation, decision-making, and task performance. The study introduces refined planning, communication, and action prompts, and benchmarks their effectiveness across multiple models and tasks.
+- Testing and evaluation of **different types of prompting strategies** 
+- Integration of  **[Ollama](https://ollama.com/)** 
+- Development of a **Chat GUI** interface for real-time **agent communication and visualization**
 
-In addition to improving prompt efficiency, this work integrates speech and graphical interfaces to enhance real-time agent interaction, leading to a more intuitive and human-like collaboration system. **Quantitative and qualitative evaluations reveal that specific prompt combinations—particularly the improved base planning prompt combined with the fourth communication prompt (cprompt4)—can significantly enhance performance, even for smaller models like Gemma 3.** Overall, the study contributes to advancing scalable, naturalistic collaboration in embodied AI systems.
+## 🤖 Language Models Used
+
+- **Gemma 7B** – [Google DeepMind](https://ai.google.dev/gemma)
+- **LLaMA 3 (8B)** – [Meta AI](https://ai.meta.com/llama/)
+- **Mistral 7B** – [Mistral AI](https://mistral.ai/news/introducing-mistral-7b/)
+- **DeepSeek-V2** – [DeepSeek AI](https://github.com/deepseek-ai)
+
 
 ---
 
